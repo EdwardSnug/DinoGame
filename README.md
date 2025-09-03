@@ -12,13 +12,13 @@ T-Rex Runner is a simple, yet engaging, 2D endless runner game built with Python
 - Delete: You can also delete a player's score and record from the database.
 # Getting Started
 ## Clone The Repository
-    -git clone https://github.com/EdwardSnug/DinoGame.git
-    -cd DinoGame
+    git clone https://github.com/EdwardSnug/DinoGame.git
+    cd DinoGame
 ## Install dependencies
-    -pip install pygame
+    pip install pygame
 ## Getting started
 Simply execute the main python script from your terminal within the DinoGame working repository
-    -python src/main.py
+    python src/main.py
 ## Controls
 - Up Arrow or Spacebar: Jump
 - Down Arrow: Duck
