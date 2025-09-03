@@ -49,6 +49,7 @@ current_state = STATE_MENU
 def reset_game():
     """Resets all game variables for a new game."""
     global dino, obstacles, score, game_speed, game_over
+    #Instance using Dinosaur class that takes in 2 arguments
     dino = Dinosaur(50, GROUND_Y)
     obstacles = []
     score = 0
@@ -66,13 +67,14 @@ def main():
     """The main game loop and state machine."""
     global current_state, player_name, score, game_over, obstacles, old_player_name, selected_player_name
     
+    # Initialize the database from our scores_db.py
     init_db()
     
     # Initialize game state variables before entering the loop
     reset_game()
 
     while True:
-        # --- Event Handling ---
+        # Event Handling
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()

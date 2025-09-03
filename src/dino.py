@@ -5,7 +5,6 @@ import os
 ASSET_DIR = os.path.join(os.path.dirname(__file__), "assets")
 
 def load_image(filename, fallback_size=(50, 50), color=(0,0,0)):
-    # Your load_image function is fine as is
     path = os.path.join(ASSET_DIR, filename)
     try:
         image = pygame.image.load(path).convert_alpha()
@@ -111,15 +110,12 @@ class Dinosaur:
             fallback_size = (88, 85)
             self.image = pygame.Surface(fallback_size, pygame.SRCALPHA)
             self.image.fill((255, 0, 255))
-        
-        # --- FIX #1: Stop the dino from "ducking" when it shouldn't be ---
         # The rect position must be carefully managed.
         # We recreate the rect to match the image, but maintain the midbottom position
-        
         # Get the new rect from the current image
         new_rect = self.image.get_rect()
         
-        # The key is to keep the rect's bottom at the ground level
+        # Keep the rect's bottom at the ground level
         if self.is_ducking and not self.is_jumping:
             # When ducking, the new rect is shorter, so we move it down to stay on the ground
             new_rect.bottom = self.ground_y
