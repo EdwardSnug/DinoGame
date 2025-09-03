@@ -1,4 +1,3 @@
-# scores_db.py
 import sqlite3
 
 DB_FILE = "scores.db"
@@ -33,3 +32,30 @@ def get_high_scores(limit=5):
     results = cur.fetchall()
     conn.close()
     return results
+
+def delete_score_by_name(player_name):
+    """Delete all scores for a player from the database by name."""
+    conn = sqlite3.connect(DB_FILE)
+    cur = conn.cursor()
+    cur.execute("DELETE FROM scores WHERE player_name = ?", (player_name,))
+    conn.commit()
+    conn.close()
+    print(f"All scores for '{player_name}' have been deleted.")
+
+def update_player_name(old_name, new_name):
+    """Updates a player's name in the database."""
+    conn = sqlite3.connect(DB_FILE)
+    cur = conn.cursor()
+    cur.execute("UPDATE scores SET player_name = ? WHERE player_name = ?", (new_name, old_name))
+    conn.commit()
+    conn.close()
+    print(f"Player name updated from '{old_name}' to '{new_name}'.")
+
+def delete_all_scores():
+    """Delete all scores from the database."""
+    conn = sqlite3.connect(DB_FILE)
+    cur = conn.cursor()
+    cur.execute("DELETE FROM scores")
+    conn.commit()
+    conn.close()
+    print("All scores have been deleted.")
